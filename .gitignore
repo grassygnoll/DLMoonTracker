@@ -18,6 +18,9 @@
 *.exe
 *.out
 
+# No swap files from vi
+*.swp
+
 # No build results
 *-debug
 *-release

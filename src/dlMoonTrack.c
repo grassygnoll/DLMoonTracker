@@ -25,18 +25,18 @@ int main(void) {
         int NuiStart = 4 ;
          */
 
-        int i, SolStart, LunStart, NuiStart ;
+        int i, SolStart, LunStart, NuiStart, Nui, Lun, Sol ;
 
-        for( i = 1; i <= SOLDAYS; i++ ) {
+        for( i = 0; i < SOLDAYS; i++ ) {
                 SolStart = i;
                 LunStart = i;
                 NuiStart = i;
 
                 /* Bounds check the smaller cycled moon arrays */
-                if( LunStart > LUNDAYS )
+                if( LunStart >= LUNDAYS )
                         LunStart = i % LUNDAYS ;
 
-                if( NuiStart > NUIDAYS )
+                if( NuiStart >= NUIDAYS )
                         NuiStart = i % NUIDAYS ;
 
                 /* Initialize Moon Chart */
@@ -44,12 +44,10 @@ int main(void) {
                 setCurPos(LUNDAYS, LunStart, Lunitari) ;
                 setCurPos(NUIDAYS, NuiStart, Nuitari) ;
 
-                /* Debug Print */
-                /* outputChart(Solinari, Lunitari, Nuitari) ; */
+                Nui = getCurPos(Nuitari, NUIDAYS) ;
+                Lun = getCurPos(Lunitari, LUNDAYS) ;
+                Sol = getCurPos(Solinari, SOLDAYS) ;
 
-                int Nui = getCurPos(Nuitari, NUIDAYS) ;
-                int Lun = getCurPos(Lunitari, LUNDAYS) ;
-                int Sol = getCurPos(Solinari, SOLDAYS) ;
                 printCurrentState(Sol, Lun, Nui) ;
 
                 printf( "Solinari: " ) ;
